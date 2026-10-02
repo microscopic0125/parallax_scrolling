@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b14">
+  <meta name="description" content="Enter the next frontier at Techfest IIT Bombay 2026. Three days of technology, ideas, and experiences beyond the ordinary.">
+  <title>Techfest 2026 — Enter the Unknown</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #080b14;
+      --paper: #f4f1e9;
+      --muted: #a8adbb;
+      --line: rgba(244, 241, 233, .16);
+      --orange: #ff663d;
+      --yellow: #ffc870;
+      --blue: #71c5fa;
+      --mono: "DM Mono", monospace;
+      --sans: "Manrope", sans-serif;
+      --page-pad: clamp(22px, 7vw, 112px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+    body::after {
+      position: fixed;
+      z-index: 10;
+      inset: 0;
+      pointer-events: none;
+      content: "";
+      opacity: .13;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.17'/%3E%3C/svg%3E");
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    ::selection { background: var(--orange); color: var(--ink); }
+
+    .progress {
+      position: fixed;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      background: var(--orange);
+    }
+    .site-header {
+      position: absolute;
+      z-index: 15;
+      top: 0;
+      left: 0;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px var(--page-pad);
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .1em;
+    }
+    .brand-mark {
+      display: grid;
+      width: 30px;
+      height: 30px;
+      place-items: center;
+      border: 1px solid rgba(244, 241, 233, .56);
+      border-radius: 50%;
+      color: var(--orange);
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+    .brand small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 8px;
+      font-weight: 400;
+      letter-spacing: .08em;
+    }
+    .nav-links { display: flex; align-items: center; gap: clamp(18px, 3.4vw, 48px); }
+    .nav-links a {
+      color: rgba(244, 241, 233, .77);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      transition: color .2s ease;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-links .nav-cta {
+      padding: 11px 16px;
+      border: 1px solid rgba(244, 241, 233, .42);
+      border-radius: 2px;
+      color: var(--paper);
+    }
+    .menu-toggle { display: none; }
+
+    .hero {
+      position: relative;
+      display: flex;
+      min-height: max(740px, 100svh);
+      align-items: center;
+      overflow: hidden;
+      padding: 125px var(--page-pad) 84px;
+      isolation: isolate;
+      background:
+        radial-gradient(ellipse at 78% 51%, rgba(44, 38, 66, .35), transparent 45%),
+        linear-gradient(120deg, #080b14 25%, #101421 66%, #14131b);
+    }
+    .hero::before {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      content: "";
+      opacity: .56;
+      background-image:
+        radial-gradient(1px 1px at 12% 24%, #fff 99%, transparent),
+        radial-gradient(1px 1px at 28% 72%, #fff 99%, transparent),
+        radial-gradient(1.5px 1.5px at 58% 22%, #fff 99%, transparent),
+        radial-gradient(1px 1px at 82% 14%, #fff 99%, transparent),
+        radial-gradient(1px 1px at 94% 61%, #fff 99%, transparent),
+        radial-gradient(1px 1px at 64% 82%, #fff 99%, transparent),
+        radial-gradient(1px 1px at 41% 44%, #fff 99%, transparent),
+        radial-gradient(1.5px 1.5px at 8% 88%, #fff 99%, transparent);
+      background-size: 390px 310px;
+    }
+    .hero-copy { position: relative; z-index: 3; width: min(650px, 58%); }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--yellow);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { width: 25px; height: 1px; background: currentColor; content: ""; }
+    .hero h1 {
+      margin: 27px 0 23px;
+      font-size: clamp(68px, 10.7vw, 158px);
+      font-weight: 600;
+      letter-spacing: -.095em;
+      line-height: .82;
+    }
+    .hero h1 span {
+      display: block;
+      margin-left: .86em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(244, 241, 233, .82);
+    }
+    .hero-description {
+      max-width: 355px;
+      margin: 0 0 31px 7px;
+      color: #b9bdc8;
+      font-size: clamp(13px, 1.2vw, 15px);
+      line-height: 1.8;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 24px; margin-left: 7px; }
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      border-radius: 2px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .button:hover { transform: translateY(-3px); }
+    .button-primary { background: var(--orange); color: var(--ink); }
+    .button-primary:hover { background: #ff805c; }
+    .button-quiet { border-color: var(--line); color: var(--paper); }
+    .button-quiet:hover { border-color: var(--paper); }
+    .button-arrow { font-size: 16px; font-weight: 400; }
+    .hero-coordinate {
+      position: absolute;
+      right: var(--page-pad);
+      bottom: 39px;
+      color: #8d93a1;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .09em;
+    }
+
+    .planet-scene {
+      position: absolute;
+      z-index: 1;
+      top: 11%;
+      right: -4%;
+      width: min(62vw, 860px);
+      height: 82%;
+      pointer-events: none;
+    }
+    .orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 87%;
+      aspect-ratio: 1;
+      border: 1px solid rgba(192, 180, 206, .16);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) rotate(-22deg) scaleY(.31);
+    }
+    .orbit::after {
+      position: absolute;
+      top: 49%;
+      left: -2px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--yellow);
+      box-shadow: 0 0 14px var(--yellow);
+      content: "";
+    }
+    .planet {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 63%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 50%;
+      background:
+        radial-gradient(ellipse at 29% 26%, rgba(255, 207, 143, .74) 0, transparent 9%),
+        radial-gradient(ellipse at 36% 39%, #b66d60 0, #8a4e58 23%, transparent 46%),
+        radial-gradient(ellipse at 65% 63%, #302844 0, #191b2b 44%, transparent 70%),
+        linear-gradient(150deg, #aa7c77 4%, #544457 39%, #161a28 72%);
+      box-shadow: inset -46px -17px 90px #070912, inset 12px 8px 55px rgba(255, 181, 123, .25), 0 0 100px rgba(110, 89, 117, .16);
+      transform: translate(-50%, -50%);
+    }
+    .planet::before, .planet::after {
+      position: absolute;
+      left: -9%;
+      width: 125%;
+      height: 17%;
+      border-radius: 50%;
+      background: rgba(237, 177, 143, .2);
+      content: "";
+      transform: rotate(-22deg);
+      filter: blur(8px);
+    }
+    .planet::before { top: 32%; }
+    .planet::after { top: 61%; left: 3%; height: 9%; background: rgba(151, 139, 177, .28); }
+    .planet-halo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 69%;
+      aspect-ratio: 1;
+      border: 1px solid rgba(241, 191, 154, .16);
+      border-radius: 50%;
+      box-shadow: 0 0 45px rgba(255, 150, 112, .05);
+      transform: translate(-50%, -50%);
+    }
+    .satellite {
+      position: absolute;
+      top: 19%;
+      left: 27%;
+      width: clamp(38px, 6vw, 76px);
+      color: var(--paper);
+      filter: drop-shadow(0 0 12px rgba(220, 231, 255, .25));
+    }
+    .satellite svg { display: block; width: 100%; overflow: visible; }
+    .planet-caption {
+      position: absolute;
+      right: 14%;
+      bottom: 13%;
+      color: #bfc0c8;
+      font-family: var(--mono);
+      font-size: 9px;
+      line-height: 1.8;
+      letter-spacing: .08em;
+    }
+    .planet-caption b { color: var(--orange); font-weight: 400; }
+    .hero-index {
+      position: absolute;
+      z-index: 2;
+      top: 45%;
+      right: 5%;
+      color: rgba(244, 241, 233, .52);
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .12em;
+      writing-mode: vertical-rl;
+    }
+    .scroll-cue {
+      position: absolute;
+      z-index: 3;
+      bottom: 34px;
+      left: var(--page-pad);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #a8adbb;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .scroll-cue span { display: block; width: 38px; height: 1px; background: var(--orange); }
+
+    .ticker {
+      position: relative;
+      z-index: 4;
+      overflow: hidden;
+      padding: 17px 0;
+      border-block: 1px solid var(--line);
+      background: #0e121d;
+    }
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      align-items: center;
+      animation: ticker 35s linear infinite;
+    }
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 35px;
+      padding: 0 22px;
+      color: #d7d8dd;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .13em;
+      white-space: nowrap;
+    }
+    .ticker-item i { color: var(--orange); font-size: 14px; font-style: normal; }
+    @keyframes ticker { to { transform: translateX(-50%); } }
+
+    .section {
+      position: relative;
+      padding: clamp(92px, 12vw, 176px) var(--page-pad);
+      overflow: hidden;
+    }
+    .section-kicker {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin: 0 0 22px;
+      color: var(--orange);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .section-kicker::before { width: 20px; height: 1px; background: currentColor; content: ""; }
+    .section h2 {
+      margin: 0;
+      font-size: clamp(44px, 7vw, 94px);
+      font-weight: 600;
+      letter-spacing: -.075em;
+      line-height: .98;
+    }
+    .section h2 em { color: var(--orange); font-style: normal; }
+    .intro {
+      position: relative;
+      min-height: 690px;
+      padding-top: 142px;
+      background: #f0ede5;
+      color: #10131b;
+    }
+    .intro-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.05fr .8fr;
+      gap: 8vw;
+      align-items: end;
+    }
+    .intro .section-kicker { color: #b7462d; }
+    .intro h2 { max-width: 620px; }
+    .intro h2 em { color: #e25636; }
+    .intro-copy {
+      max-width: 355px;
+      padding-bottom: 5px;
+      color: #5c6068;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+    .intro-copy strong { color: #141720; font-weight: 700; }
+    .planet-slice {
+      position: absolute;
+      z-index: 0;
+      right: -2%;
+      bottom: -500px;
+      width: min(60vw, 750px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(ellipse at 42% 14%, rgba(255, 231, 188, .9), transparent 3%),
+        radial-gradient(ellipse at 37% 35%, #ef9d64, #dc7048 26%, transparent 53%),
+        radial-gradient(ellipse at 60% 52%, #b74e38 0, #713d49 38%, #392a40 69%, #161925 72%);
+      box-shadow: inset -35px -35px 85px rgba(8, 11, 20, .64), 0 -10px 45px rgba(222, 103, 72, .18);
+    }
+    .planet-slice::before {
+      position: absolute;
+      top: 17%;
+      left: -8%;
+      width: 115%;
+      height: 1px;
+      background: rgba(250, 218, 185, .48);
+      box-shadow: 0 0 25px 4px rgba(252, 184, 133, .34);
+      content: "";
+      transform: rotate(-10deg);
+    }
+    .intro-stamp {
+      position: absolute;
+      z-index: 2;
+      right: 19%;
+      bottom: 100px;
+      color: rgba(250, 241, 224, .83);
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .12em;
+      line-height: 1.8;
+    }
+
+    .experiences {
+      background:
+        radial-gradient(ellipse at 100% 18%, rgba(51, 57, 82, .19), transparent 39%),
+        #0b0e17;
+    }
+    .experience-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      margin-bottom: 58px;
+      gap: 30px;
+    }
+    .experience-heading > p {
+      max-width: 260px;
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .experience-card {
+      position: relative;
+      display: flex;
+      min-height: 375px;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      padding: 24px;
+      border: 1px solid rgba(244, 241, 233, .17);
+      background: #111622;
+      transition: border-color .3s ease, transform .35s ease;
+      isolation: isolate;
+    }
+    .experience-card:hover { transform: translateY(-7px); border-color: rgba(255, 102, 61, .65); }
+    .card-art {
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 68%;
+      overflow: hidden;
+      opacity: .83;
+    }
+    .card-art::after {
+      position: absolute;
+      inset: 35% 0 0;
+      background: linear-gradient(transparent, #111622);
+      content: "";
+    }
+    .art-robot {
+      background:
+        radial-gradient(ellipse at 51% 48%, rgba(210, 228, 245, .92) 0 4%, transparent 4.4%),
+        radial-gradient(ellipse at 49% 44%, #34485e 0 16%, transparent 16.5%),
+        radial-gradient(ellipse at 50% 40%, #adc0ce 0 23%, transparent 23.5%),
+        radial-gradient(ellipse at 50% 70%, #64798a 0 28%, transparent 28.5%),
+        linear-gradient(135deg, #1a2c3a, #465365 43%, #202433);
+    }
+    .art-robot::before {
+      position: absolute;
+      top: 23%;
+      left: 31%;
+      width: 38%;
+      height: 38%;
+      border: 1px solid rgba(233, 243, 245, .4);
+      border-radius: 45% 45% 36% 36%;
+      box-shadow: 0 0 35px rgba(130, 190, 232, .25), inset 0 0 20px rgba(148, 185, 206, .5);
+      content: "";
+    }
+    .art-arena {
+      background:
+        radial-gradient(ellipse at 50% 67%, rgba(255, 111, 60, .7), transparent 7%),
+        radial-gradient(ellipse at 50% 66%, transparent 0 28%, rgba(243, 125, 88, .55) 28.4% 28.8%, transparent 29.3%),
+        radial-gradient(ellipse at 50% 66%, transparent 0 43%, rgba(244, 200, 144, .45) 43.4% 43.7%, transparent 44.2%),
+        linear-gradient(160deg, #412638, #111622 75%);
+    }
+    .art-arena::before {
+      position: absolute;
+      right: 20%;
+      bottom: 21%;
+      left: 20%;
+      height: 30%;
+      border: 1px solid rgba(255, 188, 138, .38);
+      border-radius: 50%;
+      box-shadow: 0 0 45px rgba(255, 108, 67, .38);
+      content: "";
+      transform: perspective(100px) rotateX(60deg);
+    }
+    .art-ideas {
+      background:
+        radial-gradient(circle at 71% 32%, rgba(239, 183, 136, .8) 0 1px, transparent 2px),
+        radial-gradient(circle at 23% 37%, rgba(239, 183, 136, .65) 0 1px, transparent 2px),
+        radial-gradient(circle at 51% 26%, rgba(239, 183, 136, .8) 0 1px, transparent 2px),
+        radial-gradient(ellipse at 49% 54%, #423a55, #20253b 36%, transparent 70%),
+        linear-gradient(140deg, #22283a, #151926);
+    }
+    .art-ideas::before {
+      position: absolute;
+      top: 29%;
+      left: 25%;
+      width: 50%;
+      height: 45%;
+      border: 1px solid rgba(255, 209, 164, .55);
+      border-radius: 50%;
+      box-shadow: 0 0 42px rgba(224, 151, 123, .25), inset 0 0 25px rgba(239, 183, 136, .18);
+      content: "";
+      transform: rotate(-25deg);
+    }
+    .card-top, .card-bottom { position: relative; z-index: 1; }
+    .card-number { color: rgba(244, 241, 233, .72); font-family: var(--mono); font-size: 10px; letter-spacing: .12em; }
+    .card-icon { position: absolute; top: -3px; right: 0; color: var(--yellow); font-size: 22px; }
+    .experience-card h3 { margin: 0 0 10px; font-size: 24px; font-weight: 600; letter-spacing: -.055em; }
+    .experience-card p { max-width: 255px; margin: 0; color: #adb2bd; font-size: 11px; line-height: 1.75; }
+
+    .manifesto {
+      min-height: 710px;
+      display: flex;
+      align-items: center;
+      background: #141824;
+    }
+    .manifesto::before {
+      position: absolute;
+      top: 50%;
+      right: -10%;
+      width: min(65vw, 860px);
+      aspect-ratio: 1;
+      border: 1px solid rgba(239, 190, 150, .13);
+      border-radius: 50%;
+      box-shadow: 0 0 0 46px rgba(239, 190, 150, .025), 0 0 0 105px rgba(239, 190, 150, .018), inset 0 0 80px rgba(249, 125, 87, .07);
+      content: "";
+      transform: translateY(-50%);
+    }
+    .manifesto-inner { position: relative; z-index: 1; max-width: 900px; }
+    .manifesto h2 { max-width: 870px; font-size: clamp(48px, 8.4vw, 112px); }
+    .manifesto h2 span { color: #767d8b; }
+    .manifesto-note {
+      display: flex;
+      max-width: 590px;
+      justify-content: space-between;
+      gap: 30px;
+      margin-top: 44px;
+      color: #b4b8c2;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+    .manifesto-note p { max-width: 355px; margin: 0; }
+    .manifesto-note span { color: var(--yellow); font-family: var(--mono); font-size: 9px; letter-spacing: .11em; white-space: nowrap; }
+
+    .join {
+      display: grid;
+      grid-template-columns: 1fr .8fr;
+      align-items: center;
+      gap: 9vw;
+      background: var(--orange);
+      color: #17121a;
+    }
+    .join .section-kicker { color: #4c2830; }
+    .join h2 { max-width: 620px; }
+    .join h2 em { color: #f7e9d2; }
+    .join-copy { max-width: 360px; color: rgba(25, 18, 25, .76); font-size: 13px; line-height: 1.8; }
+    .join-form { margin-top: 26px; }
+    .form-row { display: flex; border-bottom: 1px solid rgba(23, 18, 26, .5); }
+    .form-row input {
+      width: 100%;
+      min-width: 0;
+      padding: 14px 4px;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: #17121a;
+      font-size: 12px;
+    }
+    .form-row input::placeholder { color: rgba(23, 18, 26, .62); }
+    .form-row button {
+      flex: 0 0 auto;
+      padding: 0 8px;
+      border: 0;
+      background: transparent;
+      color: #17121a;
+      cursor: pointer;
+      font-size: 21px;
+      transition: transform .2s ease;
+    }
+    .form-row button:hover { transform: translateX(4px); }
+    .form-message { min-height: 18px; margin: 10px 0 0; color: #3c2027; font-size: 10px; }
+    .join-aside { padding-top: 25px; }
+    .join-aside p { max-width: 260px; margin: 0 0 28px; color: rgba(25, 18, 25, .72); font-family: var(--mono); font-size: 10px; letter-spacing: .03em; line-height: 1.9; }
+    .join .button-quiet { border-color: rgba(23, 18, 26, .58); color: #17121a; }
+    .join .button-quiet:hover { border-color: #17121a; }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 26px var(--page-pad);
+      background: #080b14;
+      color: #9297a4;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .08em;
+    }
+    footer a { color: var(--paper); }
+    .footer-links { display: flex; gap: 22px; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px) scale(.985);
+      transition: opacity .85s ease, transform .85s cubic-bezier(.2,.7,.2,1);
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+    [data-parallax] { will-change: opacity, transform; }
+
+    @media (max-width: 800px) {
+      .hero { min-height: 850px; align-items: flex-start; padding-top: 180px; }
+      .hero-copy { width: 80%; }
+      .hero h1 { font-size: clamp(76px, 15vw, 125px); }
+      .planet-scene { top: 35%; right: -20%; width: 85vw; height: 60%; opacity: .86; }
+      .hero-index { top: 58%; right: 4%; }
+      .intro { min-height: 780px; }
+      .intro-grid { grid-template-columns: 1fr; gap: 26px; }
+      .intro-copy { max-width: 420px; }
+      .planet-slice { right: -9%; bottom: -390px; width: 85vw; }
+      .intro-stamp { right: 12%; bottom: 80px; }
+      .experience-grid { grid-template-columns: 1fr 1fr; }
+      .experience-card:last-child { grid-column: 1 / -1; min-height: 320px; }
+      .join { grid-template-columns: 1fr; gap: 34px; }
+      .join-aside { padding-top: 0; }
+    }
+    @media (max-width: 560px) {
+      :root { --page-pad: 23px; }
+      .site-header { padding-top: 21px; }
+      .menu-toggle {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border: 1px solid var(--line);
+        background: transparent;
+        color: var(--paper);
+        font-size: 17px;
+      }
+      .nav-links {
+        position: absolute;
+        top: 74px;
+        right: var(--page-pad);
+        left: var(--page-pad);
+        display: none;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+        padding: 10px 18px;
+        border: 1px solid var(--line);
+        background: rgba(11, 14, 23, .97);
+        backdrop-filter: blur(12px);
+      }
+      .nav-links.is-open { display: flex; }
+      .nav-links a { padding: 13px 0; }
+      .nav-links .nav-cta { margin: 5px 0 8px; padding: 12px; text-align: center; }
+      .hero { min-height: 790px; padding-top: 178px; }
+      .hero-copy { width: 100%; }
+      .hero h1 { margin-top: 24px; font-size: clamp(73px, 19vw, 103px); }
+      .hero-description { max-width: 300px; }
+      .hero-actions { gap: 13px; }
+      .button { min-height: 45px; padding-inline: 14px; font-size: 10px; }
+      .planet-scene { top: 44%; right: -28%; width: 111vw; height: 50%; }
+      .satellite { top: 12%; left: 23%; }
+      .planet-caption { right: 12%; bottom: 5%; }
+      .hero-index { top: 63%; right: 4%; font-size: 8px; }
+      .scroll-cue { bottom: 30px; }
+      .hero-coordinate { bottom: 31px; font-size: 8px; }
+      .section { padding-block: 90px; }
+      .intro { min-height: 720px; padding-top: 104px; }
+      .intro h2 { font-size: clamp(48px, 13vw, 68px); }
+      .intro-copy { font-size: 12px; }
+      .planet-slice { right: -27%; bottom: -225px; width: 112vw; }
+      .intro-stamp { right: 10%; bottom: 58px; }
+      .experience-heading { display: block; margin-bottom: 34px; }
+      .experience-heading > p { margin-top: 20px; }
+      .experience-grid { grid-template-columns: 1fr; gap: 12px; }
+      .experience-card, .experience-card:last-child { min-height: 330px; grid-column: auto; }
+      .manifesto { min-height: 650px; }
+      .manifesto::before { top: 57%; right: -49%; width: 110vw; }
+      .manifesto h2 { font-size: clamp(49px, 13vw, 75px); }
+      .manifesto-note { align-items: flex-start; flex-direction: column; gap: 16px; }
+      .join h2 { font-size: clamp(49px, 13vw, 73px); }
+      footer { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Techfest IIT Bombay home">
+      <span class="brand-mark">T</span>
+      <span>TECHFEST<small>IIT BOMBAY · 2026</small></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#universe">The universe</a>
+      <a href="#experiences">Experiences</a>
+      <a href="#manifesto">Our spirit</a>
+      <a class="nav-cta" href="#updates">Get updates <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">The next frontier · Mumbai, India</p>
+        <h1 id="hero-title">ENTER<span>THE<br>UNKNOWN</span></h1>
+        <p class="hero-description">Three days where brilliant minds, bold ideas, and tomorrow's technology collide. The future isn't waiting. Neither are we.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#experiences">Explore the mission <span class="button-arrow" aria-hidden="true">↘</span></a>
+          <a class="button button-quiet" href="#universe">Discover Techfest</a>
+        </div>
+      </div>
+      <div class="planet-scene" aria-hidden="true">
+        <div class="orbit" data-parallax="0.12"></div>
+        <div class="planet-halo" data-parallax="-0.08"></div>
+        <div class="planet" data-parallax="-0.16"></div>
+        <div class="satellite" data-parallax="0.24">
+          <svg viewBox="0 0 88 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M35 21 17 9 9 12l9 18m39 9 18 12 8-3-9-18" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M30 38c9-18 21-27 38-27-1 17-10 29-29 37L30 38Z" fill="#dce4e8" fill-opacity=".22" stroke="currentColor" stroke-width="1.2"/>
+            <path d="m33 40-8 12 2-13m16 3 9 10-1-15" stroke="currentColor" stroke-width="1.1"/>
+            <circle cx="54" cy="20" r="3" fill="#ffb76e"/>
+          </svg>
+        </div>
+        <div class="planet-caption" data-parallax="0.08"><b>SECTOR 01</b><br>UNKNOWN / UNLIMITED</div>
+      </div>
+      <span class="hero-index">19°08' N&nbsp;&nbsp;72°54' E — BEYOND THE ORDINARY</span>
+      <div class="scroll-cue"><span></span> Scroll to explore</div>
+      <div class="hero-coordinate">2026 &nbsp; / &nbsp; IIT BOMBAY</div>
+    </section>
+
+    <div class="ticker" aria-label="Technology, creativity, competition, community">
+      <div class="ticker-track">
+        <div class="ticker-item">TECHNOLOGY <i>✳</i> CREATIVITY <i>✳</i> COMPETITION <i>✳</i> COMMUNITY <i>✳</i> TOMORROW, TOGETHER <i>✳</i></div>
+        <div class="ticker-item" aria-hidden="true">TECHNOLOGY <i>✳</i> CREATIVITY <i>✳</i> COMPETITION <i>✳</i> COMMUNITY <i>✳</i> TOMORROW, TOGETHER <i>✳</i></div>
+      </div>
+    </div>
+
+    <section class="section intro" id="universe" aria-labelledby="universe-title">
+      <div class="intro-grid reveal">
+        <div>
+          <p class="section-kicker">A different kind of gathering</p>
+          <h2 id="universe-title">Curiosity has<br>no <em>gravity.</em></h2>
+        </div>
+        <p class="intro-copy"><strong>Techfest is Asia's largest science and technology festival.</strong> Every year, IIT Bombay becomes a meeting point for makers, thinkers, dreamers, and doers. Come with questions. Leave with a new universe of possibilities.</p>
+      </div>
+      <div class="planet-slice" data-parallax="0.11" aria-hidden="true"></div>
+      <div class="intro-stamp" data-parallax="-0.08">IIT BOMBAY<br>EST. 1998<br><span>— STILL LOOKING UP</span></div>
+    </section>
+
+    <section class="section experiences" id="experiences" aria-labelledby="experience-title">
+      <div class="experience-heading reveal">
+        <div>
+          <p class="section-kicker">Find your orbit</p>
+          <h2 id="experience-title">Worlds to<br><em>step into.</em></h2>
+        </div>
+        <p>Bring your curiosity. Pick a direction. There is no wrong way to explore the future.</p>
+      </div>
+      <div class="experience-grid">
+        <article class="experience-card reveal">
+          <div class="card-art art-robot" data-parallax="-0.06" aria-hidden="true"></div>
+          <div class="card-top"><span class="card-number">01 / BUILD</span><span class="card-icon" aria-hidden="true">↗</span></div>
+          <div class="card-bottom"><h3>Make the impossible.</h3><p>From robotics to code, get hands-on with the ideas shaping the world to come.</p></div>
+        </article>
+        <article class="experience-card reveal">
+          <div class="card-art art-arena" data-parallax="-0.08" aria-hidden="true"></div>
+          <div class="card-top"><span class="card-number">02 / COMPETE</span><span class="card-icon" aria-hidden="true">↗</span></div>
+          <div class="card-bottom"><h3>Bring your best.</h3><p>Step into the arena, test your limits, and meet the people who push them.</p></div>
+        </article>
+        <article class="experience-card reveal">
+          <div class="card-art art-ideas" data-parallax="-0.05" aria-hidden="true"></div>
+          <div class="card-top"><span class="card-number">03 / IMAGINE</span><span class="card-icon" aria-hidden="true">↗</span></div>
+          <div class="card-bottom"><h3>Think further.</h3><p>Exchange a spark with a stranger. Leave with an idea big enough to change everything.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section manifesto" id="manifesto" aria-labelledby="manifesto-title">
+      <div class="manifesto-inner reveal">
+        <p class="section-kicker">Not just a festival</p>
+        <h2 id="manifesto-title">The future belongs to those who <span>show up curious.</span></h2>
+        <div class="manifesto-note">
+          <span>OUR NORTH STAR&nbsp; ↗</span>
+          <p>For the ones who stay up asking “what if?” For the ones who make the first move. This is your kind of place.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section join" id="updates" aria-labelledby="join-title">
+      <div class="reveal">
+        <p class="section-kicker">Your signal starts here</p>
+        <h2 id="join-title">Stay in<br>the <em>orbit.</em></h2>
+      </div>
+      <div class="join-aside reveal">
+        <p>THE NEXT FRONTIER IS CLOSER THAN YOU THINK.<br>Get the first signal when Techfest 2026 updates are cleared for launch.</p>
+        <form class="join-form">
+          <label class="eyebrow" for="email">Your email address</label>
+          <div class="form-row">
+            <input id="email" name="email" type="email" placeholder="you@somewhere.com" autocomplete="email" required>
+            <button type="submit" aria-label="Sign up for Techfest updates">↗</button>
+          </div>
+          <p class="form-message" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="#top"><span class="brand-mark">T</span><span>TECHFEST<small>IIT BOMBAY · 2026</small></span></a>
+    <span>MADE OF CURIOSITY · MUMBAI, INDIA</span>
+    <div class="footer-links"><a href="#top">Back to top ↑</a></div>
+  </footer>
+
+  <script>
+    const progress = document.querySelector(".progress");
+    const parallaxItems = [...document.querySelectorAll("[data-parallax]")].map(element => ({
+      element,
+      speed: Number(element.dataset.parallax),
+      current: 0,
+      target: 0,
+      scale: 1,
+      targetScale: 1,
+      opacity: 1,
+      targetOpacity: 1
+    }));
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let animationFrame = 0;
+
+    function updateParallaxTargets() {
+      if (reducedMotion) return;
+      for (const item of parallaxItems) {
+        const rect = item.element.getBoundingClientRect();
+        const unshiftedCenter = rect.top + rect.height / 2 - item.current;
+        const distanceFromCenter = Math.abs(window.innerHeight / 2 - unshiftedCenter);
+        const focus = Math.max(0, Math.min(1, 1 - distanceFromCenter / (window.innerHeight * 0.85)));
+        item.target = (window.innerHeight / 2 - unshiftedCenter) * item.speed;
+        item.targetScale = 0.92 + focus * 0.13;
+        item.targetOpacity = 0.12 + focus * 0.88;
+      }
+      if (!animationFrame) animationFrame = window.requestAnimationFrame(animateParallax);
+    }
+
+    function animateParallax() {
+      let stillMoving = false;
+      for (const item of parallaxItems) {
+        const difference = item.target - item.current;
+        if (Math.abs(difference) > 0.1) {
+          item.current += difference * 0.12;
+          stillMoving = true;
+        } else {
+          item.current = item.target;
+        }
+        const scaleDifference = item.targetScale - item.scale;
+        const opacityDifference = item.targetOpacity - item.opacity;
+        if (Math.abs(scaleDifference) > 0.001 || Math.abs(opacityDifference) > 0.005) {
+          stillMoving = true;
+        }
+        item.scale += scaleDifference * 0.12;
+        item.opacity += opacityDifference * 0.12;
+        if (!stillMoving) {
+          item.scale = item.targetScale;
+          item.opacity = item.targetOpacity;
+        }
+        item.element.style.transform = `translate3d(0, ${item.current.toFixed(2)}px, 0) scale(${item.scale.toFixed(3)})`;
+        item.element.style.opacity = item.opacity.toFixed(3);
+      }
+      if (stillMoving) {
+        animationFrame = window.requestAnimationFrame(animateParallax);
+      } else {
+        animationFrame = 0;
+      }
+    }
+
+    function updateScrollEffects() {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.transform = `scaleX(${scrollable > 0 ? window.scrollY / scrollable : 0})`;
+      updateParallaxTargets();
+    }
+
+    window.addEventListener("scroll", updateScrollEffects, { passive: true });
+    window.addEventListener("resize", updateScrollEffects);
+    updateScrollEffects();
+
+    const revealObserver = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        } else {
+          entry.target.classList.remove("is-visible");
+        }
+      }
+    }, { threshold: 0.12, rootMargin: "-8% 0px -8% 0px" });
+    document.querySelectorAll(".reveal").forEach(element => revealObserver.observe(element));
+
+    const menuButton = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector(".nav-links");
+    menuButton.addEventListener("click", () => {
+      const open = navigation.classList.toggle("is-open");
+      menuButton.setAttribute("aria-expanded", String(open));
+      menuButton.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+      menuButton.textContent = open ? "×" : "☰";
+    });
+    navigation.addEventListener("click", event => {
+      if (event.target.closest("a")) {
+        navigation.classList.remove("is-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation");
+        menuButton.textContent = "☰";
+      }
+    });
+
+    document.querySelector(".join-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const input = document.querySelector("#email");
+      const message = document.querySelector(".form-message");
+      if (!input.checkValidity()) {
+        input.reportValidity();
+        return;
+      }
+      message.textContent = "This preview isn't connected to a mailing list yet.";
+      input.value = "";
+    });
+  </script>
+</body>
+</html>
